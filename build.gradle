@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'org.openecho'
+group 'shizenergy.net'
 version '1.0.0'
 
 repositories {
@@ -10,8 +10,17 @@ repositories {
 }
 
 dependencies {
-    // 必要な依存関係をここに追加
+    implementation 'org.processing:core:3.3.7'  
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = '22'
+    targetCompatibility = '22'
+}
