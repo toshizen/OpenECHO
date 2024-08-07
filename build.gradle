@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'org.openecho'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 必要な依存関係をここに追加
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
