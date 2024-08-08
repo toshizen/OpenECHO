@@ -746,26 +746,27 @@ bytes<br>
 	 * Get - optional<br>
 	 */
 	protected byte[] getMinimumMaximumDischargeCurrent() {return null;}
-	/* TODO edit */
 	/**
 	 * Property name : Charger/discharger type<br>
 	 * <br>
-	 * EPC : 0xCB<br>
+	 * EPC : 0xCC<br>
 	 * <br>
 	 * Contents of property :<br>
-	 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+	 * This property indicates the type of electric vehicle charger/discharger.<br>
 	 * <br>
 	 * Value range (decimal notation) :<br>
-	 * 0x0000.0x7FFE (0.3,276.6A)<br>
-	 * Minimum discharge current: Maximum discharge current<br>
+	 * 0x00 - 0xFF <br>
+	 * AC_CPLT=0x11,AC_HLC(charge)=0x12,AC_HLC(charge/discharge)=0x13<br>
+	 * DC_TYPE_AA(charge)=0x21,DC_TYPE_AA(charge/discharge)=0x22,DC_TYPE_AA(discharge)=0x23<br>
+	 * DC_TYPE_BB(charge)=0x31,DC_TYPE_BB(charge/discharge)=0x32,DC_TYPE_BB(discharge)=0x33<br>
+	 * DC_TYPE_EE(charge)=0x41,DC_TYPE_EE(charge/discharge)=0x42,DC_TYPE_EE(discharge)=0x43<br>
+	 * DC_TYPE_FF(charge)=0x51,DC_TYPE_FF(charge/discharge)=0x52,DC_TYPE_FF(discharge)=0x53<br>
 	 * <br>
-	 * Data type : unsigned short
-×2<br>
+	 * Data type : unsigned char <br>
 	 * <br>
-	 * Data size : 4
-bytes<br>
+	 * Data size : 1 byte<br>
 	 * <br>
-	 * Unit : 0.1A<br>
+	 * Unit : -<br>
 	 * <br>
 	 * Access rule :<br>
 	 * Announce - undefined<br>
@@ -802,26 +803,27 @@ bytes<br>
 		if(edt == null || !(edt.length == 4)) return false;
 		return true;
 	}
-	/* TODO edit */
 	/**
-	 * Property name : Charger/discharge type<br>
+	 * Property name : Charger/discharger type<br>
 	 * <br>
 	 * EPC : 0xCC<br>
 	 * <br>
 	 * Contents of property :<br>
-	 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+	 * This property indicates the type of electric vehicle charger/discharger.<br>
 	 * <br>
 	 * Value range (decimal notation) :<br>
-	 * 0x0000.0x7FFE (0.3,276.6A)<br>
-	 * Minimum discharge current: Maximum discharge current<br>
+	 * 0x00 - 0xFF <br>
+	 * AC_CPLT=0x11,AC_HLC(charge)=0x12,AC_HLC(charge/discharge)=0x13<br>
+	 * DC_TYPE_AA(charge)=0x21,DC_TYPE_AA(charge/discharge)=0x22,DC_TYPE_AA(discharge)=0x23<br>
+	 * DC_TYPE_BB(charge)=0x31,DC_TYPE_BB(charge/discharge)=0x32,DC_TYPE_BB(discharge)=0x33<br>
+	 * DC_TYPE_EE(charge)=0x41,DC_TYPE_EE(charge/discharge)=0x42,DC_TYPE_EE(discharge)=0x43<br>
+	 * DC_TYPE_FF(charge)=0x51,DC_TYPE_FF(charge/discharge)=0x52,DC_TYPE_FF(discharge)=0x53<br>
 	 * <br>
-	 * Data type : unsigned short
-×2<br>
+	 * Data type : unsigned char <br>
 	 * <br>
-	 * Data size : 4
-bytes<br>
+	 * Data size : 1 byte<br>
 	 * <br>
-	 * Unit : 0.1A<br>
+	 * Unit : -<br>
 	 * <br>
 	 * Access rule :<br>
 	 * Announce - undefined<br>
@@ -829,7 +831,7 @@ bytes<br>
 	 * Get - optional<br>
 	 */
 	protected boolean isValidChargerDischargerType(byte[] edt) {
-		if(edt == null || !(edt.length == 4)) return false;
+		if(edt == null || !(edt.length == 1)) return false;
 		return true;
 	}
 	/**
@@ -2980,26 +2982,27 @@ bytes<br>
 		 * Get - optional<br>
 		 */
 		protected void onGetMinimumMaximumDischargeCurrent(EchoObject eoj, short tid, byte esv, EchoProperty property, boolean success) {}
-		/* TODO edit */	
 		/**
-		 * Property name : Charger/discharge type<br>
+		 * Property name : Charger/discharger type<br>
 		 * <br>
 		 * EPC : 0xCC<br>
 		 * <br>
 		 * Contents of property :<br>
-		 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+		 * This property indicates the type of electric vehicle charger/discharger.<br>
 		 * <br>
 		 * Value range (decimal notation) :<br>
-		 * 0x0000.0x7FFE (0.3,276.6A)<br>
-		 * Minimum discharge current: Maximum discharge current<br>
+		 * 0x00 - 0xFF <br>
+		 * AC_CPLT=0x11,AC_HLC(charge)=0x12,AC_HLC(charge/discharge)=0x13<br>
+		 * DC_TYPE_AA(charge)=0x21,DC_TYPE_AA(charge/discharge)=0x22,DC_TYPE_AA(discharge)=0x23<br>
+		 * DC_TYPE_BB(charge)=0x31,DC_TYPE_BB(charge/discharge)=0x32,DC_TYPE_BB(discharge)=0x33<br>
+		 * DC_TYPE_EE(charge)=0x41,DC_TYPE_EE(charge/discharge)=0x42,DC_TYPE_EE(discharge)=0x43<br>
+		 * DC_TYPE_FF(charge)=0x51,DC_TYPE_FF(charge/discharge)=0x52,DC_TYPE_FF(discharge)=0x53<br>
 		 * <br>
-		 * Data type : unsigned short
-×2<br>
+		 * Data type : unsigned char <br>
 		 * <br>
-		 * Data size : 4
-bytes<br>
+		 * Data size : 1 byte<br>
 		 * <br>
-		 * Unit : 0.1A<br>
+		 * Unit : -<br>
 		 * <br>
 		 * Access rule :<br>
 		 * Announce - undefined<br>
@@ -3021,8 +3024,7 @@ bytes<br>
 		 * <br>
 		 * Data type : unsigned long<br>
 		 * <br>
-		 * Data size : 4
-bytes<br>
+		 * Data size : 4 bytes<br>
 		 * <br>
 		 * Unit : Wh<br>
 		 * <br>
@@ -4664,24 +4666,27 @@ bytes<br>
 			reqGetProperty(EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT);
 			return this;
 		}
-		/* TODO edit */
 		/**
-		 * Property name : Charger/discarger type<br>
+		 * Property name : Charger/discharger type<br>
 		 * <br>
 		 * EPC : 0xCC<br>
 		 * <br>
 		 * Contents of property :<br>
-		 * This property indicates the charger discharger type from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+		 * This property indicates the type of electric vehicle charger/discharger.<br>
 		 * <br>
 		 * Value range (decimal notation) :<br>
-		 * 0x0000.0x7FFE (0.3,276.6A)<br>
-		 * Minimum discharge current: Maximum discharge current<br>
+		 * 0x00 - 0xFF <br>
+		 * AC_CPLT=0x11,AC_HLC(charge)=0x12,AC_HLC(charge/discharge)=0x13<br>
+		 * DC_TYPE_AA(charge)=0x21,DC_TYPE_AA(charge/discharge)=0x22,DC_TYPE_AA(discharge)=0x23<br>
+		 * DC_TYPE_BB(charge)=0x31,DC_TYPE_BB(charge/discharge)=0x32,DC_TYPE_BB(discharge)=0x33<br>
+		 * DC_TYPE_EE(charge)=0x41,DC_TYPE_EE(charge/discharge)=0x42,DC_TYPE_EE(discharge)=0x43<br>
+		 * DC_TYPE_FF(charge)=0x51,DC_TYPE_FF(charge/discharge)=0x52,DC_TYPE_FF(discharge)=0x53<br>
 		 * <br>
-		 * Data type : unsigned short ×2<br>
+		 * Data type : unsigned char <br>
 		 * <br>
-		 * Data size : 4 bytes<br>
+		 * Data size : 1 byte<br>
 		 * <br>
-		 * Unit : 0.1A<br>
+		 * Unit : -<br>
 		 * <br>
 		 * Access rule :<br>
 		 * Announce - undefined<br>
@@ -5804,30 +5809,33 @@ bytes<br>
 			reqInformProperty(EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT);
 			return this;
 		}
-		/* TODO edit */
 		/**
-		 * Property name : Charger/discharge type<br>
+		 * Property name : Charger/discharger type<br>
 		 * <br>
 		 * EPC : 0xCC<br>
 		 * <br>
 		 * Contents of property :<br>
-		 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+		 * This property indicates the type of electric vehicle charger/discharger.<br>
 		 * <br>
 		 * Value range (decimal notation) :<br>
-		 * 0x0000.0x7FFE (0.3,276.6A)<br>
-		 * Minimum discharge current: Maximum discharge current<br>
+		 * 0x00 - 0xFF <br>
+		 * AC_CPLT=0x11,AC_HLC(charge)=0x12,AC_HLC(charge/discharge)=0x13<br>
+		 * DC_TYPE_AA(charge)=0x21,DC_TYPE_AA(charge/discharge)=0x22,DC_TYPE_AA(discharge)=0x23<br>
+		 * DC_TYPE_BB(charge)=0x31,DC_TYPE_BB(charge/discharge)=0x32,DC_TYPE_BB(discharge)=0x33<br>
+		 * DC_TYPE_EE(charge)=0x41,DC_TYPE_EE(charge/discharge)=0x42,DC_TYPE_EE(discharge)=0x43<br>
+		 * DC_TYPE_FF(charge)=0x51,DC_TYPE_FF(charge/discharge)=0x52,DC_TYPE_FF(discharge)=0x53<br>
 		 * <br>
-		 * Data type : unsigned short ×2<br>
+		 * Data type : unsigned char <br>
 		 * <br>
-		 * Data size : 4 bytes<br>
+		 * Data size : 1 byte<br>
 		 * <br>
-		 * Unit : 0.1A<br>
+		 * Unit : -<br>
 		 * <br>
 		 * Access rule :<br>
 		 * Announce - undefined<br>
 		 * Set - undefined<br>
 		 * Get - optional<br>
-		 */
+		 */	
 		public Informer reqInformChargerDischargerType() {
 			reqInformProperty(EPC_CHARGER_DISCHARGER_TYPE);
 			return this;
