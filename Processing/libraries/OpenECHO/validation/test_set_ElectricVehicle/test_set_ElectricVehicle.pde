@@ -16,6 +16,9 @@ void setup(){
     // 全ての自動車充放電器のOff
     ElectricVehicle.setG().reqSetOperationStatus(new byte[]{0x31}).send();
 
+    // 車両接続確認
+    ElectricVehicle.setG().reqSetVehicleConnectConfirmation(new byte[]{0x10}).send();
+
   } catch( IOException e){ 
     e.printStackTrace();
   }

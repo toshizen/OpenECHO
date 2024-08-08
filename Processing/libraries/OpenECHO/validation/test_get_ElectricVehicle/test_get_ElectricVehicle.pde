@@ -300,23 +300,33 @@ void setup() {
         protected void onGetDischargeElectricEnergySetting(EchoObject eoj, short tid, byte esv, 
                                                      EchoProperty property, boolean success) {
           super.onGetDischargeElectricEnergySetting(eoj, tid, esv, property, success) ;
-          if ( !success ) { 
-            println( "error in call onGetDischargeElectricEnergySetting" ) ; 
+          if ( !success ) {
+            println( "error in call onGetDischargeElectricEnergySetting" ) ;
             return ;
-          } 
+          }
           String epc = String.format("%X", property.epc);
           println(epc+" , "+bti(property.edt)+" , onGetDischargeElectricEnergySetting") ;
-        } 
+        }
         protected void onGetChargerDischargerType(EchoObject eoj, short tid, byte esv, 
                                                      EchoProperty property, boolean success) {
           super.onGetChargerDischargerType(eoj, tid, esv, property, success) ;
-          if ( !success ) { 
+          if ( !success ) {
             println( "error in call onGetChargerDischargerType" ) ; 
             return ;
-          } 
+          }
           String epc = String.format("%X", property.epc);
           println(epc+" , "+bti(property.edt)+" , onGetChargerDischargerType") ;
-        }        
+        }
+        protected void onGetVehicleConnectConfirmation(EchoObject eoj, short tid, byte esv,
+                                                     EchoProperty property, boolean success) {
+          super.onGetVehicleConnectConfirmation(eoj, tid, esv, property, success) ;
+          if ( !success ) {
+            println( "error but onGetVehicleConnectConfirmation is undefined" ) ;
+            return ;
+          }
+          String epc = String.format("%X", property.epc);
+          println(epc+" , "+bti(property.edt)+" , onGetVehicleConnectConfirmation") ;
+        }
       }
       ) ;
 
@@ -331,11 +341,11 @@ void setup() {
           .reqGetOperationModeSetting().reqGetSystemInterconnecteDType()
           .reqGetRemainingBatteryCapacity1().reqGetRemainingBatteryCapacity3()
           .reqGetChargeElectricEnergySetting().reqGetDischargeElectricEnergySetting()
-          .reqGetChargerDischargerType().send();
-      } 
+          .reqGetChargerDischargerType().reqGetVehicleConnectConfirmation().send();
+      }
       catch(IOException e) {
         e.printStackTrace();
-      } 
+      }
     }
   }) ;
 

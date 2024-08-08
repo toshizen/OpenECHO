@@ -25,6 +25,7 @@ public abstract class ElectricVehicle extends DeviceObject {
 	public static final byte EPC_MINIMUM_MAXIMUM_CHARGE_CURRENT = (byte)0xCA;
 	public static final byte EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT = (byte)0xCB;
 	public static final byte EPC_CHARGER_DISCHARGER_TYPE = (byte)0xCC;
+	public static final byte EPC_VEHICLE_CONNECT_CONFIRMATION = (byte)0xCD;
 	public static final byte EPC_USED_CAPACITY1 = (byte)0xD0;
 	public static final byte EPC_USED_CAPACITY2 = (byte)0xD1;
 	public static final byte EPC_RATED_VOLTAGE = (byte)0xD2;
@@ -775,6 +776,30 @@ bytes<br>
 	 */
 	protected byte[] getChargerDischargerType() {return null;}
 	/**
+	 * Property name : Vehicle connect confirmation<br>
+	 * <br>
+	 * EPC : 0xCD<br>
+	 * <br>
+	 * Contents of property :<br>
+	 * This property check the connection status between the electric vehicle charger and discharger and the vehicle<br>
+	 * <br>
+	 * Value range (decimal notation) :<br>
+	 * 0x00 - 0xFF <br>
+	 * Connect confirmation = 0x10<br>
+	 * <br>
+	 * Data type : unsigned char <br>
+	 * <br>
+	 * Data size : 1 byte<br>
+	 * <br>
+	 * Unit : -<br>
+	 * <br>
+	 * Access rule :<br>
+	 * Announce - undefined<br>
+	 * Set - mandatory (only if the charger/discharger type is DC_Type AA)<br>
+	 * Get - undefined<br>
+	 */
+	protected byte[] getVehicleConnectConfirmation() {return null;}
+	/**
 	 * Property name : Minimum/maximum discharge current<br>
 	 * <br>
 	 * EPC : 0xCB<br>
@@ -831,6 +856,33 @@ bytes<br>
 	 * Get - optional<br>
 	 */
 	protected boolean isValidChargerDischargerType(byte[] edt) {
+		if(edt == null || !(edt.length == 1)) return false;
+		return true;
+	}
+	/**
+	 * Property name : Vehicle connect confirmation<br>
+	 * <br>
+	 * EPC : 0xCD<br>
+	 * <br>
+	 * Contents of property :<br>
+	 * This property check the connection status between the electric vehicle charger and discharger and the vehicle<br>
+	 * <br>
+	 * Value range (decimal notation) :<br>
+	 * 0x00 - 0xFF <br>
+	 * Connect confirmation = 0x10<br>
+	 * <br>
+	 * Data type : unsigned char <br>
+	 * <br>
+	 * Data size : 1 byte<br>
+	 * <br>
+	 * Unit : -<br>
+	 * <br>
+	 * Access rule :<br>
+	 * Announce - undefined<br>
+	 * Set - mandatory (only if the charger/discharger type is DC_Type AA)<br>
+	 * Get - undefined<br>
+	 */
+	protected boolean isValidVehicleConnectConfirmation(byte[] edt) {
 		if(edt == null || !(edt.length == 1)) return false;
 		return true;
 	}
@@ -2403,6 +2455,7 @@ bytes<br>
 		case EPC_MINIMUM_MAXIMUM_CHARGE_CURRENT : return getMinimumMaximumChargeCurrent();
 		case EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT : return getMinimumMaximumDischargeCurrent();
 		case EPC_CHARGER_DISCHARGER_TYPE : return getChargerDischargerType();
+		case EPC_VEHICLE_CONNECT_CONFIRMATION : return getVehicleConnectConfirmation();
 		case EPC_USED_CAPACITY1 : return getUsedCapacity1();
 		case EPC_USED_CAPACITY2 : return getUsedCapacity2();
 		case EPC_RATED_VOLTAGE : return getRatedVoltage();
@@ -2450,6 +2503,7 @@ bytes<br>
 		case EPC_MINIMUM_MAXIMUM_CHARGE_CURRENT : return isValidMinimumMaximumChargeCurrent(property.edt);
 		case EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT : return isValidMinimumMaximumDischargeCurrent(property.edt);
 		case EPC_CHARGER_DISCHARGER_TYPE : return isValidChargerDischargerType(property.edt);
+		case EPC_VEHICLE_CONNECT_CONFIRMATION : return isValidVehicleConnectConfirmation(property.edt);
 		case EPC_USED_CAPACITY1 : return isValidUsedCapacity1(property.edt);
 		case EPC_USED_CAPACITY2 : return isValidUsedCapacity2(property.edt);
 		case EPC_RATED_VOLTAGE : return isValidRatedVoltage(property.edt);
@@ -2604,6 +2658,9 @@ bytes<br>
 				return true;
 			case EPC_CHARGER_DISCHARGER_TYPE :
 				onGetChargerDischargerType(eoj, tid, esv, property, success);
+				return true;
+			case EPC_VEHICLE_CONNECT_CONFIRMATION :
+				onGetVehicleConnectConfirmation(eoj, tid, esv, property, success);
 				return true;
 			case EPC_USED_CAPACITY1 : 
 				onGetUsedCapacity1(eoj, tid, esv, property, success);
@@ -3010,6 +3067,30 @@ bytes<br>
 		 * Get - optional<br>
 		 */
 		protected void onGetChargerDischargerType(EchoObject eoj, short tid, byte esv, EchoProperty property, boolean success) {}
+		/**
+		 * Property name : Vehicle connect confirmation<br>
+		 * <br>
+		 * EPC : 0xCD<br>
+		 * <br>
+		 * Contents of property :<br>
+		 * This property check the connection status between the electric vehicle charger and discharger and the vehicle<br>
+		 * <br>
+		 * Value range (decimal notation) :<br>
+		 * 0x00 - 0xFF <br>
+		 * Connect confirmation = 0x10<br>
+		 * <br>
+		 * Data type : unsigned char <br>
+		 * <br>
+		 * Data size : 1 byte<br>
+		 * <br>
+		 * Unit : -<br>
+		 * <br>
+		 * Access rule :<br>
+		 * Announce - undefined<br>
+		 * Set - mandatory (only if the charger/discharger type is DC_Type AA)<br>
+		 * Get - undefined<br>
+		 */
+		protected void onGetVehicleConnectConfirmation(EchoObject eoj, short tid, byte esv, EchoProperty property, boolean success) {}
 		/**
 		 * Property name : Used capacity 1<br>
 		 * <br>
@@ -3917,7 +3998,34 @@ bytes<br>
 		public Setter reqSetPowerLimitSetting(byte[] edt) {
 			return (Setter)super.reqSetPowerLimitSetting(edt);
 		}
-		
+
+		/**
+		 * Property name : Vehicle connect confirmation<br>
+		 * <br>
+		 * EPC : 0xCD<br>
+		 * <br>
+		 * Contents of property :<br>
+		 * This property check the connection status between the electric vehicle charger and discharger and the vehicle<br>
+		 * <br>
+		 * Value range (decimal notation) :<br>
+		 * 0x00 - 0xFF <br>
+		 * Connect confirmation = 0x10<br>
+		 * <br>
+		 * Data type : unsigned char <br>
+		 * <br>
+		 * Data size : 1 byte<br>
+		 * <br>
+		 * Unit : -<br>
+		 * <br>
+		 * Access rule :<br>
+		 * Announce - undefined<br>
+		 * Set - mandatory (only if the charger/discharger type is DC_Type AA)<br>
+		 * Get - undefined<br>
+		 */
+		public Setter reqSetVehicleConnectConfirmation(byte[] edt) {
+			reqSetProperty(EPC_VEHICLE_CONNECT_CONFIRMATION, edt);
+			return this;
+		}
 		/**
 		 * Property name : Cumulative discharge electric energy reset setting<br>
 		 * <br>
@@ -4695,6 +4803,33 @@ bytes<br>
 		 */
 		public Getter reqGetChargerDischargerType() {
 			reqGetProperty(EPC_CHARGER_DISCHARGER_TYPE);
+			return this;
+		}
+		/**
+		 * Property name : Vehicle connect confirmation<br>
+		 * <br>
+		 * EPC : 0xCD<br>
+		 * <br>
+		 * Contents of property :<br>
+		 * This property check the connection status between the electric vehicle charger and discharger and the vehicle<br>
+		 * <br>
+		 * Value range (decimal notation) :<br>
+		 * 0x00 - 0xFF <br>
+		 * Connect confirmation = 0x10<br>
+		 * <br>
+		 * Data type : unsigned char <br>
+		 * <br>
+		 * Data size : 1 byte<br>
+		 * <br>
+		 * Unit : -<br>
+		 * <br>
+		 * Access rule :<br>
+		 * Announce - undefined<br>
+		 * Set - mandatory (only if the charger/discharger type is DC_Type AA)<br>
+		 * Get - undefined<br>
+		 */
+		public Getter reqGetVehicleConnectConfirmation() {
+			reqGetProperty(EPC_VEHICLE_CONNECT_CONFIRMATION);
 			return this;
 		}
 		/**
@@ -5841,6 +5976,33 @@ bytes<br>
 			return this;
 		}
 		/**
+		 * Property name : Vehicle connect confirmation<br>
+		 * <br>
+		 * EPC : 0xCD<br>
+		 * <br>
+		 * Contents of property :<br>
+		 * This property check the connection status between the electric vehicle charger and discharger and the vehicle<br>
+		 * <br>
+		 * Value range (decimal notation) :<br>
+		 * 0x00 - 0xFF <br>
+		 * Connect confirmation = 0x10<br>
+		 * <br>
+		 * Data type : unsigned char <br>
+		 * <br>
+		 * Data size : 1 byte<br>
+		 * <br>
+		 * Unit : -<br>
+		 * <br>
+		 * Access rule :<br>
+		 * Announce - undefined<br>
+		 * Set - mandatory (only if the charger/discharger type is DC_Type AA)<br>
+		 * Get - undefined<br>
+		 */
+		public Informer reqInformVehicleConnectConfirmation() {
+			reqInformProperty(EPC_VEHICLE_CONNECT_CONFIRMATION);
+			return this;
+		}
+		/**
 		 * Property name : Used capacity 1<br>
 		 * <br>
 		 * EPC : 0xD0<br>
@@ -5854,8 +6016,7 @@ bytes<br>
 		 * <br>
 		 * Data type : unsigned long<br>
 		 * <br>
-		 * Data size : 4
-bytes<br>
+		 * Data size : 4 bytes<br>
 		 * <br>
 		 * Unit : Wh<br>
 		 * <br>
