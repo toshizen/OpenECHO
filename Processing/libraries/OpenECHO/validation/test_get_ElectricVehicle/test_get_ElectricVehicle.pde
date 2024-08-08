@@ -306,6 +306,16 @@ void setup() {
           } 
           String epc = String.format("%X", property.epc);
           println(epc+" , "+bti(property.edt)+" , onGetDischargeElectricEnergySetting") ;
+        } 
+        protected void onGetChargerDischargerType(EchoObject eoj, short tid, byte esv, 
+                                                     EchoProperty property, boolean success) {
+          super.onGetChargerDischargerType(eoj, tid, esv, property, success) ;
+          if ( !success ) { 
+            println( "error in call onGetChargerDischargerType" ) ; 
+            return ;
+          } 
+          String epc = String.format("%X", property.epc);
+          println(epc+" , "+bti(property.edt)+" , onGetChargerDischargerType") ;
         }        
       }
       ) ;
@@ -320,7 +330,8 @@ void setup() {
           .reqGetMeasuredCumulativeDischargeElectricEnergy().reqGetMeasuredCumulativeChargeElectricEnergy()
           .reqGetOperationModeSetting().reqGetSystemInterconnecteDType()
           .reqGetRemainingBatteryCapacity1().reqGetRemainingBatteryCapacity3()
-          .reqGetChargeElectricEnergySetting().reqGetDischargeElectricEnergySetting().send();
+          .reqGetChargeElectricEnergySetting().reqGetDischargeElectricEnergySetting()
+          .reqGetChargerDischargerType().send();
       } 
       catch(IOException e) {
         e.printStackTrace();

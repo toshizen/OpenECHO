@@ -24,6 +24,7 @@ public abstract class ElectricVehicle extends DeviceObject {
 	public static final byte EPC_MINIMUM_MAXIMUM_DISCHARGE_ELECTRIC_ENERGY = (byte)0xC9;
 	public static final byte EPC_MINIMUM_MAXIMUM_CHARGE_CURRENT = (byte)0xCA;
 	public static final byte EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT = (byte)0xCB;
+	public static final byte EPC_CHARGER_DISCHARGER_TYPE = (byte)0xCC;
 	public static final byte EPC_USED_CAPACITY1 = (byte)0xD0;
 	public static final byte EPC_USED_CAPACITY2 = (byte)0xD1;
 	public static final byte EPC_RATED_VOLTAGE = (byte)0xD2;
@@ -745,6 +746,33 @@ bytes<br>
 	 * Get - optional<br>
 	 */
 	protected byte[] getMinimumMaximumDischargeCurrent() {return null;}
+	/* TODO edit */
+	/**
+	 * Property name : Charger/discharger type<br>
+	 * <br>
+	 * EPC : 0xCB<br>
+	 * <br>
+	 * Contents of property :<br>
+	 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+	 * <br>
+	 * Value range (decimal notation) :<br>
+	 * 0x0000.0x7FFE (0.3,276.6A)<br>
+	 * Minimum discharge current: Maximum discharge current<br>
+	 * <br>
+	 * Data type : unsigned short
+×2<br>
+	 * <br>
+	 * Data size : 4
+bytes<br>
+	 * <br>
+	 * Unit : 0.1A<br>
+	 * <br>
+	 * Access rule :<br>
+	 * Announce - undefined<br>
+	 * Set - undefined<br>
+	 * Get - optional<br>
+	 */
+	protected byte[] getChargerDischargerType() {return null;}
 	/**
 	 * Property name : Minimum/maximum discharge current<br>
 	 * <br>
@@ -771,6 +799,36 @@ bytes<br>
 	 * Get - optional<br>
 	 */
 	protected boolean isValidMinimumMaximumDischargeCurrent(byte[] edt) {
+		if(edt == null || !(edt.length == 4)) return false;
+		return true;
+	}
+	/* TODO edit */
+	/**
+	 * Property name : Charger/discharge type<br>
+	 * <br>
+	 * EPC : 0xCC<br>
+	 * <br>
+	 * Contents of property :<br>
+	 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+	 * <br>
+	 * Value range (decimal notation) :<br>
+	 * 0x0000.0x7FFE (0.3,276.6A)<br>
+	 * Minimum discharge current: Maximum discharge current<br>
+	 * <br>
+	 * Data type : unsigned short
+×2<br>
+	 * <br>
+	 * Data size : 4
+bytes<br>
+	 * <br>
+	 * Unit : 0.1A<br>
+	 * <br>
+	 * Access rule :<br>
+	 * Announce - undefined<br>
+	 * Set - undefined<br>
+	 * Get - optional<br>
+	 */
+	protected boolean isValidChargerDischargerType(byte[] edt) {
 		if(edt == null || !(edt.length == 4)) return false;
 		return true;
 	}
@@ -2342,6 +2400,7 @@ bytes<br>
 		case EPC_MINIMUM_MAXIMUM_DISCHARGE_ELECTRIC_ENERGY : return getMinimumMaximumDischargeElectricEnergy();
 		case EPC_MINIMUM_MAXIMUM_CHARGE_CURRENT : return getMinimumMaximumChargeCurrent();
 		case EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT : return getMinimumMaximumDischargeCurrent();
+		case EPC_CHARGER_DISCHARGER_TYPE : return getChargerDischargerType();
 		case EPC_USED_CAPACITY1 : return getUsedCapacity1();
 		case EPC_USED_CAPACITY2 : return getUsedCapacity2();
 		case EPC_RATED_VOLTAGE : return getRatedVoltage();
@@ -2388,6 +2447,7 @@ bytes<br>
 		case EPC_MINIMUM_MAXIMUM_DISCHARGE_ELECTRIC_ENERGY : return isValidMinimumMaximumDischargeElectricEnergy(property.edt);
 		case EPC_MINIMUM_MAXIMUM_CHARGE_CURRENT : return isValidMinimumMaximumChargeCurrent(property.edt);
 		case EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT : return isValidMinimumMaximumDischargeCurrent(property.edt);
+		case EPC_CHARGER_DISCHARGER_TYPE : return isValidChargerDischargerType(property.edt);
 		case EPC_USED_CAPACITY1 : return isValidUsedCapacity1(property.edt);
 		case EPC_USED_CAPACITY2 : return isValidUsedCapacity2(property.edt);
 		case EPC_RATED_VOLTAGE : return isValidRatedVoltage(property.edt);
@@ -2539,6 +2599,9 @@ bytes<br>
 				return true;
 			case EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT : 
 				onGetMinimumMaximumDischargeCurrent(eoj, tid, esv, property, success);
+				return true;
+			case EPC_CHARGER_DISCHARGER_TYPE :
+				onGetChargerDischargerType(eoj, tid, esv, property, success);
 				return true;
 			case EPC_USED_CAPACITY1 : 
 				onGetUsedCapacity1(eoj, tid, esv, property, success);
@@ -2917,6 +2980,33 @@ bytes<br>
 		 * Get - optional<br>
 		 */
 		protected void onGetMinimumMaximumDischargeCurrent(EchoObject eoj, short tid, byte esv, EchoProperty property, boolean success) {}
+		/* TODO edit */	
+		/**
+		 * Property name : Charger/discharge type<br>
+		 * <br>
+		 * EPC : 0xCC<br>
+		 * <br>
+		 * Contents of property :<br>
+		 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+		 * <br>
+		 * Value range (decimal notation) :<br>
+		 * 0x0000.0x7FFE (0.3,276.6A)<br>
+		 * Minimum discharge current: Maximum discharge current<br>
+		 * <br>
+		 * Data type : unsigned short
+×2<br>
+		 * <br>
+		 * Data size : 4
+bytes<br>
+		 * <br>
+		 * Unit : 0.1A<br>
+		 * <br>
+		 * Access rule :<br>
+		 * Announce - undefined<br>
+		 * Set - undefined<br>
+		 * Get - optional<br>
+		 */
+		protected void onGetChargerDischargerType(EchoObject eoj, short tid, byte esv, EchoProperty property, boolean success) {}
 		/**
 		 * Property name : Used capacity 1<br>
 		 * <br>
@@ -4574,6 +4664,34 @@ bytes<br>
 			reqGetProperty(EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT);
 			return this;
 		}
+		/* TODO edit */
+		/**
+		 * Property name : Charger/discarger type<br>
+		 * <br>
+		 * EPC : 0xCC<br>
+		 * <br>
+		 * Contents of property :<br>
+		 * This property indicates the charger discharger type from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+		 * <br>
+		 * Value range (decimal notation) :<br>
+		 * 0x0000.0x7FFE (0.3,276.6A)<br>
+		 * Minimum discharge current: Maximum discharge current<br>
+		 * <br>
+		 * Data type : unsigned short ×2<br>
+		 * <br>
+		 * Data size : 4 bytes<br>
+		 * <br>
+		 * Unit : 0.1A<br>
+		 * <br>
+		 * Access rule :<br>
+		 * Announce - undefined<br>
+		 * Set - undefined<br>
+		 * Get - optional<br>
+		 */
+		public Getter reqGetChargerDischargerType() {
+			reqGetProperty(EPC_CHARGER_DISCHARGER_TYPE);
+			return this;
+		}
 		/**
 		 * Property name : Used capacity 1<br>
 		 * <br>
@@ -5684,6 +5802,34 @@ bytes<br>
 		 */
 		public Informer reqInformMinimumMaximumDischargeCurrent() {
 			reqInformProperty(EPC_MINIMUM_MAXIMUM_DISCHARGE_CURRENT);
+			return this;
+		}
+		/* TODO edit */
+		/**
+		 * Property name : Charger/discharge type<br>
+		 * <br>
+		 * EPC : 0xCC<br>
+		 * <br>
+		 * Contents of property :<br>
+		 * This property indicates the  minimum/maximum discharge current from the electric vehicle charge/discharge system in increments of 0.1A.<br>
+		 * <br>
+		 * Value range (decimal notation) :<br>
+		 * 0x0000.0x7FFE (0.3,276.6A)<br>
+		 * Minimum discharge current: Maximum discharge current<br>
+		 * <br>
+		 * Data type : unsigned short ×2<br>
+		 * <br>
+		 * Data size : 4 bytes<br>
+		 * <br>
+		 * Unit : 0.1A<br>
+		 * <br>
+		 * Access rule :<br>
+		 * Announce - undefined<br>
+		 * Set - undefined<br>
+		 * Get - optional<br>
+		 */
+		public Informer reqInformChargerDischargerType() {
+			reqInformProperty(EPC_CHARGER_DISCHARGER_TYPE);
 			return this;
 		}
 		/**
